@@ -3,196 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Documentación - Grafos</title>
-    <link rel="stylesheet" href="blog-grafos/css/styles.css">
-    <style>
-        .doc-card {
-            background: white;
-            border: 2px solid #667eea;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 15px 0;
-            transition: all 0.3s ease;
-        }
-        
-        .doc-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-        
-        .doc-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        .doc-card p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .doc-link {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-        
-        .doc-link:hover {
-            background: #764ba2;
-        }
-        
-        .grid-docs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-    </style>
+    <title>🎮 GRAFOS GAMING EDITION - Level Up con Estructuras de Datos 🎮</title>
+    <link rel="stylesheet" href="blog/css/style.css">
 </head>
 <body>
+    <!-- HEADER -->
+    <header>
+        <h1>🎮 GRAFOS GAMING EDITION 🎮</h1>
+        <p>Level Up con la estructura de datos más poderosa del gaming</p>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="#posts">Tutoriales</a>
+        <a href="https://github.com/jorgegarzon2122-cpu/proyecto-copilot" target="_blank">GitHub</a>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
     <div class="container">
-        <header>
-            <h1>📚 Centro de Documentación - Grafos</h1>
-            <p>Recursos completos para aprender sobre estructuras de datos de grafos</p>
-        </header>
+        <section>
+            <h2 style="color: #00ff88; margin-bottom: 30px; text-align: center; text-shadow: 0 0 10px #00ff88;">⚡ Desbloquea Tus Conocimientos ⚡</h2>
+            
+            <div class="blog-posts" id="posts">
+                <!-- POST 1 -->
+                <article class="post-card">
+                    <h2>🎯 Domina los Nodos: La Base de tu Arsenal</h2>
+                    <div class="post-meta">🎖️ Tutorial Nivel 1 - Diciembre 2025</div>
+                    <div class="post-excerpt">
+                        En este nivel, aprenderás qué son los grafos, sus componentes fundamentales 
+                        (nodos y aristas) y descubrirás los diferentes tipos de grafos en el juego. 
+                        ¡Prepárate para conquistar el mundo de las estructuras de datos!
+                    </div>
+                    <a href="blog/posts/post1.html" class="read-more">▶ Jugar Ahora →</a>
+                </article>
 
-        <main style="padding: 40px;">
-            <h2 style="color: #667eea; margin-bottom: 30px;">📖 Recursos Disponibles</h2>
+                <!-- POST 2 -->
+                <article class="post-card">
+                    <h2>⚙️ Equipa tu Arsenal: Representaciones</h2>
+                    <div class="post-meta">🎖️ Tutorial Nivel 2 - Diciembre 2025</div>
+                    <div class="post-excerpt">
+                        Desbloquea dos poderosas armas: la Matriz de Adyacencia y la Lista de Adyacencia. 
+                        Aprende cuándo usar cada una para maximizar tu poder computacional. 
+                        Código Python incluido para dominar el campo de batalla.
+                    </div>
+                    <a href="blog/posts/post2.html" class="read-more">▶ Jugar Ahora →</a>
+                </article>
 
-            <div class="grid-docs">
-                <div class="doc-card">
-                    <h3>🎯 Blog Principal</h3>
-                    <p>
-                        Introducción completa a grafos con todas las secciones: definiciones, 
-                        tipos, representación, algoritmos, aplicaciones y análisis de complejidad.
-                    </p>
-                    <a href="blog-grafos/index.html" class="doc-link">Ir al Blog</a>
-                </div>
-
-                <div class="doc-card">
-                    <h3>💻 Ejemplos de Código</h3>
-                    <p>
-                        Implementaciones Python de estructuras de grafos y algoritmos: 
-                        DFS, BFS, Dijkstra, detección de ciclos, componentes conexas y más.
-                    </p>
-                    <a href="blog-grafos/assets/ejemplos.py" class="doc-link">Ver Código</a>
-                </div>
-
-                <div class="doc-card">
-                    <h3>📊 Diagramas Visuales</h3>
-                    <p>
-                        15 diagramas ASCII detallados mostrando diferentes tipos de grafos, 
-                        búsquedas, árboles de expansión mínima y más.
-                    </p>
-                    <a href="blog-grafos/assets/diagramas.txt" class="doc-link">Ver Diagramas</a>
-                </div>
-
-                <div class="doc-card">
-                    <h3>⚡ Referencia Rápida</h3>
-                    <p>
-                        Guía de referencia rápida con definiciones, complejidades, 
-                        algoritmos, propiedades y aplicaciones de grafos.
-                    </p>
-                    <a href="blog-grafos/assets/referencia_rapida.txt" class="doc-link">Ver Referencia</a>
-                </div>
-
-                <div class="doc-card">
-                    <h3>📝 README del Proyecto</h3>
-                    <p>
-                        Documentación técnica de la estructura del proyecto, 
-                        características principales y próximas expansiones.
-                    </p>
-                    <a href="blog-grafos/README.md" class="doc-link">Ver README</a>
-                </div>
+                <!-- POST 3 -->
+                <article class="post-card">
+                    <h2>⚡ Ataque Final: Algoritmos BFS y DFS</h2>
+                    <div class="post-meta">🎖️ Tutorial Final - Diciembre 2025</div>
+                    <div class="post-excerpt">
+                        Domina los dos ataques especiales más devastadores: Búsqueda en Amplitud (BFS) 
+                        y Búsqueda en Profundidad (DFS). Descubre sus tácticas, fortalezas y cuándo 
+                        desatarlas para conquistar cualquier desafío gamer.
+                    </div>
+                    <a href="blog/posts/post3.html" class="read-more">▶ Jugar Ahora →</a>
+                </article>
             </div>
-
-            <div style="background: #f0f4ff; padding: 20px; border-radius: 8px; margin: 30px 0;">
-                <h3 style="color: #667eea;">📂 Estructura del Proyecto</h3>
-                <pre style="background: white; padding: 15px; border-radius: 5px; overflow-x: auto;">blog-grafos/
-├── index.html                 ← Página principal del blog
-├── README.md                  ← Documentación del proyecto
-├── css/
-│   └── styles.css            ← Estilos centralizados
-├── js/
-│   └── main.js               ← JavaScript funcional
-├── assets/
-│   ├── ejemplos.py           ← Código Python de algoritmos
-│   ├── diagramas.txt         ← Diagramas ASCII
-│   └── referencia_rapida.txt ← Guía de referencia
-└── pages/
-    └── (Próximas secciones)</pre>
-            </div>
-
-            <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; margin: 30px 0;">
-                <h3 style="color: #28a745;">✨ Características del Blog</h3>
-                <ul style="font-size: 1.1em; line-height: 2;">
-                    <li>✅ Diseño moderno y responsivo</li>
-                    <li>✅ Navegación interactiva con auto-activación en scroll</li>
-                    <li>✅ Ejemplos de código Python ejecutables</li>
-                    <li>✅ 15+ diagramas visuales ASCII</li>
-                    <li>✅ Tablas de complejidad y comparativas</li>
-                    <li>✅ Explicaciones detalladas de algoritmos</li>
-                    <li>✅ Aplicaciones reales en mundo actual</li>
-                    <li>✅ Análisis de ventajas y desventajas</li>
-                </ul>
-            </div>
-
-            <div style="background: #fff3e0; padding: 20px; border-radius: 8px; margin: 30px 0;">
-                <h3 style="color: #f57c00;">🎓 Temas Cubiertos</h3>
-                <div style="columns: 2; column-gap: 30px;">
-                    <ul style="line-height: 1.8;">
-                        <li>Introducción a Grafos</li>
-                        <li>Definición Formal (V, E)</li>
-                        <li>Grafo No Dirigido</li>
-                        <li>Grafo Dirigido (Digrafo)</li>
-                        <li>Grafo Ponderado</li>
-                        <li>Grafo Completo</li>
-                        <li>Grafo Conexo</li>
-                        <li>Grafo Cíclico</li>
-                    </ul>
-                    <ul style="line-height: 1.8;">
-                        <li>Matriz de Adyacencia</li>
-                        <li>Lista de Adyacencia</li>
-                        <li>Lista de Aristas</li>
-                        <li>DFS (Búsqueda en Profundidad)</li>
-                        <li>BFS (Búsqueda en Amplitud)</li>
-                        <li>Algoritmo de Dijkstra</li>
-                        <li>Floyd-Warshall</li>
-                        <li>Prim y Kruskal (MST)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h2 style="color: #667eea; margin-top: 40px; margin-bottom: 20px;">🚀 Cómo Empezar</h2>
-            <ol style="font-size: 1.1em; line-height: 2;">
-                <li><strong>Lee el Blog:</strong> Abre <code>blog-grafos/index.html</code> en tu navegador para una introducción completa.</li>
-                <li><strong>Estudia los Ejemplos:</strong> Revisa <code>blog-grafos/assets/ejemplos.py</code> para ver implementaciones prácticas.</li>
-                <li><strong>Visualiza Diagramas:</strong> Consulta <code>blog-grafos/assets/diagramas.txt</code> para entender visualmente.</li>
-                <li><strong>Referencia Rápida:</strong> Usa <code>blog-grafos/assets/referencia_rapida.txt</code> como guía de bolsillo.</li>
-                <li><strong>Practica:</strong> Ejecuta y modifica el código Python de ejemplos.</li>
-            </ol>
-
-            <h2 style="color: #667eea; margin-top: 40px; margin-bottom: 20px;">📚 Próximas Expansiones</h2>
-            <ul style="font-size: 1.1em; line-height: 2;">
-                <li>⏳ Página de ejercicios interactivos</li>
-                <li>⏳ Visualizador interactivo de grafos</li>
-                <li>⏳ Tutorials de implementación paso a paso</li>
-                <li>⏳ Problemas resueltos de plataformas de programación</li>
-                <li>⏳ Animaciones de algoritmos</li>
-            </ul>
-
-        </main>
-
-        <footer style="padding: 30px 40px; text-align: center; background: #f8f9fa; border-top: 2px solid #ddd;">
-            <p>&copy; 2025 Blog de Grafos - Centro de Documentación Completo</p>
-            <p>Estructura de Datos 2 | <a href="#" style="color: #667eea; text-decoration: none;">Proyecto Copilot</a></p>
-            <p style="font-size: 0.9em; color: #999; margin-top: 10px;">
-                Recursos educativos para aprender estructuras de datos fundamentales
-            </p>
-        </footer>
+        </section>
     </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>🎮 GRAFOS GAMING EDITION 🎮 - 2025</p>
+        <p>Tu nexo con las estructuras de datos más épicas</p>
+    </footer>
+
+    <script src="blog/js/main.js"></script>
 </body>
 </html>

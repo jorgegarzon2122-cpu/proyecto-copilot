@@ -27,11 +27,12 @@ html {
 }
 
 body {
-    font-family: 'Arial', 'Courier New', monospace;
+    font-family: 'Courier New', 'Arial', monospace;
     line-height: 1.6;
     color: var(--text-dark);
-    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary-color) 100%);
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1219 100%);
     background-attachment: fixed;
+    min-height: 100vh;
 }
 
 /* ===========================
@@ -431,4 +432,66 @@ footer p {
     .container {
         padding: 0 10px;
     }
+}
+
+/* ===========================
+   EFECTOS GAMING ÉPICOS
+   =========================== */
+
+/* Efecto de brillo pulsante en títulos */
+@keyframes neonGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color), 0 0 20px var(--accent-secondary);
+    }
+    50% {
+        text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color), 0 0 30px var(--accent-secondary), 0 0 40px var(--accent-tertiary);
+    }
+}
+
+header h1 {
+    animation: neonGlow 2s ease-in-out infinite;
+}
+
+.post-header h1 {
+    animation: neonGlow 2s ease-in-out infinite;
+}
+
+/* Efecto de movimiento en bordes */
+@keyframes borderGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(0, 255, 136, 0.3), inset 0 0 15px rgba(0, 255, 136, 0.05);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 136, 0.5), inset 0 0 20px rgba(0, 255, 136, 0.1);
+    }
+}
+
+.post-card {
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+.post-content {
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* Efecto de transición en botones */
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+    }
+}
+
+.back-btn {
+    animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+.read-more {
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    animation: buttonPulse 0.6s ease-in-out infinite;
 }

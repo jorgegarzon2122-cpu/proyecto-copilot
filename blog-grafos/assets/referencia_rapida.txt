@@ -1,0 +1,232 @@
+================================================================================
+                    REFERENCIA RAPIDA - GRAFOS
+================================================================================
+
+📌 DEFINICIÓN BÁSICA
+================================================================================
+
+Un grafo es G = (V, E) donde:
+- V: Conjunto de vertices (nodos)
+- E: Conjunto de aristas (conexiones)
+
+Ejemplo: G = ({A,B,C}, {(A,B), (B,C), (A,C)})
+
+
+📊 TIPOS DE GRAFOS
+================================================================================
+
+1. NO DIRIGIDO vs DIRIGIDO
+   No Dirigido: A -- B  (bidireccional)
+   Dirigido:    A --> B (unidireccional)
+
+2. PONDERADO vs NO PONDERADO
+   Ponderado:     A --5-- B (con pesos/costos)
+   No Ponderado:  A ------ B
+
+3. CONEXO vs DESCONECTADO
+   Conexo: existe camino entre cualquier par
+   Desconectado: hay vertices aislados
+
+4. CICLICO vs ACICLICO
+   Ciclico: contiene ciclos (A->B->C->A)
+   Aciclico: sin ciclos (DAG - Directed Acyclic Graph)
+
+5. COMPLETO
+   Todo vertice conectado con todos los otros
+   K_n tiene n(n-1)/2 aristas
+
+
+🏗️ REPRESENTACIONES
+================================================================================
+
+1. LISTA DE ADYACENCIA (mejor para grafos dispersos)
+   grafo = {
+       'A': ['B', 'C'],
+       'B': ['A', 'D'],
+       'C': ['A'],
+       'D': ['B']
+   }
+   Espacio: O(V + E)
+
+2. MATRIZ DE ADYACENCIA (mejor para grafos densos)
+   [  0  1  1  0 ]
+   [  1  0  0  1 ]
+   [  1  0  0  0 ]
+   [  0  1  0  0 ]
+   Espacio: O(V²)
+
+3. LISTA DE ARISTAS (para algoritmos especiales)
+   [(A,B), (A,C), (B,D), (C,D)]
+   Espacio: O(E)
+
+
+⚙️ ALGORITMOS DE BÚSQUEDA
+================================================================================
+
+DFS (Depth-First Search)
+   - Uso: Detectar ciclos, componentes conexas, ordenamiento topologico
+   - Complejidad: O(V + E)
+   - Estructura: Pila (stack)
+   - Implementacion: Recursiva o iterativa con pila
+
+BFS (Breadth-First Search)
+   - Uso: Camino mas corto (grafos sin pesos), distancia minima
+   - Complejidad: O(V + E)
+   - Estructura: Cola (queue)
+   - Implementacion: Iterativa con deque
+
+
+🛣️ ALGORITMOS DE CAMINO MAS CORTO
+================================================================================
+
+DIJKSTRA
+   - Grafos: Ponderados con pesos positivos
+   - Complejidad: O((V + E) log V) con heap
+   - Salida: Distancia desde origen a todos los vertices
+   - NO funciona con: Pesos negativos
+
+BELLMAN-FORD
+   - Grafos: Ponderados (incluyendo negativos)
+   - Complejidad: O(V * E)
+   - Detecta: Ciclos negativos
+
+FLOYD-WARSHALL
+   - Grafos: Todos los pares de vertices
+   - Complejidad: O(V³)
+   - Salida: Matriz de distancias minimas
+
+
+🌳 ÁRBOL DE EXPANSION MINIMA (MST)
+================================================================================
+
+PRIM
+   - Complejidad: O((V + E) log V)
+   - Estrategia: Crece el árbol desde un vertice
+   - Estructura: Priority queue
+
+KRUSKAL
+   - Complejidad: O(E log E)
+   - Estrategia: Ordena aristas por peso, agrega sin crear ciclos
+   - Estructura: Union-Find
+
+
+📈 ANALISIS DE COMPLEJIDAD
+================================================================================
+
+Operacion              Lista Adyacencia    Matriz Adyacencia
+Agregar vertice        O(1)                O(V²)
+Agregar arista         O(1)                O(1)
+Eliminar arista        O(grado)            O(1)
+Verificar arista       O(grado)            O(1)
+Listar adyacentes      O(grado)            O(V)
+
+DFS/BFS                O(V + E)            O(V²)
+Dijkstra               O((V+E) log V)      O(V²)
+Floyd-Warshall        -                    O(V³)
+
+
+🔍 DETECCION DE CARACTERISTICAS
+================================================================================
+
+CICLOS (Undirected)
+   def tiene_ciclo(grafo):
+       Usar DFS con seguimiento de padre
+       Si encontramos vertice visitado que no es padre -> ciclo
+
+CICLOS (Directed)
+   def tiene_ciclo_dirigido(grafo):
+       Usar DFS con stack de recursion (rec_stack)
+       Si encuentra vertice en rec_stack -> ciclo
+
+COMPONENTES CONEXAS
+   Llamar DFS/BFS desde cada vertice no visitado
+   Cada DFS/BFS descubre una componente
+
+VERTICES ARTICULOS (Cut vertices)
+   Vertices cuya remocion desconecta el grafo
+   Usar DFS + tiempo de descubrimiento
+
+PUENTES (Bridges)
+   Aristas cuya remocion desconecta el grafo
+   Usar DFS + tiempo de descubrimiento
+
+
+🎯 CASO DE USO vs REPRESENTACIÓN
+================================================================================
+
+Necesito...                          Uso...
+Minimizar espacio                    Lista de Adyacencia
+Acceso rapido a aristas              Matriz de Adyacencia
+Procesar todas aristas               Lista de Aristas
+Verificar adyacencia rapido          Matriz de Adyacencia
+Recorrer todo el grafo               Lista de Adyacencia
+Grafo muy denso                      Matriz de Adyacencia
+Grafo muy disperso                   Lista de Adyacencia
+
+
+📋 PROPIEDADES Y FORMULAS
+================================================================================
+
+Grafo Completo K_n:
+   - Vertices: n
+   - Aristas: n(n-1)/2
+   - Grado de cada vertice: n-1
+
+Suma de grados:
+   sum(grados de todos vertices) = 2 * E
+
+Grafo Conexo:
+   - Aristas minimas: V - 1 (es un árbol)
+   - Aristas maximas: V(V-1)/2
+
+Diametro del grafo:
+   Distancia maxima entre cualquier par de vertices
+
+
+💡 TIPS Y TRUCOS
+================================================================================
+
+✓ Para grafos pequenos: usar matriz
+✓ Para grafos grandes/dispersos: usar lista
+✓ DFS: Detectar ciclos, ordenamiento topologico
+✓ BFS: Camino mas corto sin pesos
+✓ Dijkstra: Camino mas corto con pesos positivos
+✓ Floyd-Warshall: Todos los pares (V pequeno)
+✓ Union-Find: Util con Kruskal y deteccion de ciclos
+✓ Siempre inicializar visitados para evitar bucles infinitos
+
+
+🔗 APLICACIONES COMUNES
+================================================================================
+
+Redes Sociales: 
+   - Usuarios = vertices, relaciones = aristas
+   - Problema: Recomendaciones, influencers
+
+GPS/Mapas:
+   - Ciudades = vertices, carreteras = aristas ponderadas
+   - Problema: Ruta mas corta
+
+Redes de Computadoras:
+   - Computadoras = vertices, conexiones = aristas
+   - Problema: Conectividad, redundancia
+
+Planificacion de Tareas:
+   - Tareas = vertices, dependencias = aristas dirigidas
+   - Problema: Detectar ciclos, ordenamiento
+
+Quimica:
+   - Atomos = vertices, enlaces = aristas
+   - Problema: Estructura molecular
+
+Juegos:
+   - Estados = vertices, transiciones = aristas
+   - Problema: Pathfinding (A*), estrategia
+
+Compiladores:
+   - Variables = vertices, flujo de datos = aristas
+   - Problema: Analisis de datos
+
+================================================================================
+                          FIN DE LA REFERENCIA
+================================================================================

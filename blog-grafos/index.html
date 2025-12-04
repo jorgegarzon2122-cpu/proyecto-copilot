@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog completo sobre Grafos - Estructura de Datos fundamental en informática">
+    <meta name="keywords" content="grafos, estructura de datos, algoritmos, programación">
+    <title>Blog de Grafos - Estructura de Datos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>📊 Blog de Grafos</h1>
+            <p>Estructura de Datos Fundamental en Informática</p>
+        </header>
+
+        <!-- NAVEGACIÓN -->
+        <nav>
+            <a href="#introduccion">Introducción</a>
+            <a href="#definicion">Definición</a>
+            <a href="#tipos">Tipos</a>
+            <a href="#representacion">Representación</a>
+            <a href="#algoritmos">Algoritmos</a>
+            <a href="#aplicaciones">Aplicaciones</a>
+            <a href="#ventajas">Ventajas</a>
+        </nav>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main>
+            <!-- INTRODUCCIÓN -->
+            <section id="introduccion">
+                <article class="article">
+                    <h2>🎯 Introducción a los Grafos</h2>
+                    <p>
+                        Los <strong>grafos</strong> son una de las estructuras de datos más versátiles y poderosas 
+                        en la informática. Se utilizan para modelar y resolver problemas complejos en diversas áreas 
+                        como redes de computadoras, mapas de rutas, redes sociales, química molecular y muchas más.
+                    </p>
+                    <p>
+                        Un grafo es una estructura matemática que permite representar relaciones entre objetos. 
+                        A diferencia de otras estructuras lineales (como listas o árboles), los grafos pueden 
+                        representar conexiones arbitrarias y complejas.
+                    </p>
+                </article>
+            </section>
+
+            <!-- DEFINICIÓN -->
+            <section id="definicion">
+                <article class="article">
+                    <h2>📐 Definición Formal</h2>
+                    <p>
+                        Un grafo es un par ordenado G = (V, E) donde:
+                    </p>
+                    <ul>
+                        <li><strong>V:</strong> Conjunto de vértices (nodos)</li>
+                        <li><strong>E:</strong> Conjunto de aristas (conexiones entre vértices)</li>
+                    </ul>
+
+                    <h3>Elementos Principales</h3>
+                    <ul>
+                        <li><strong>Vértice (Nodo):</strong> Cada punto en el grafo</li>
+                        <li><strong>Arista:</strong> Conexión entre dos vértices</li>
+                        <li><strong>Peso:</strong> Valor asociado a una arista (opcional)</li>
+                        <li><strong>Grado:</strong> Número de aristas conectadas a un vértice</li>
+                    </ul>
+
+                    <h3>Ejemplo Visual</h3>
+                    <div class="diagrama">
+                        <strong>G = (V, E)</strong><br><br>
+                        V = {A, B, C, D, E}<br>
+                        E = {(A,B), (A,C), (B,D), (C,D), (D,E)}<br><br>
+                        <code>
+        A -------- B<br>
+        |          |<br>
+        |          |<br>
+        C -------- D ------- E
+                        </code>
+                    </div>
+                </article>
+            </section>
+
+            <!-- TIPOS DE GRAFOS -->
+            <section id="tipos">
+                <article class="article">
+                    <h2>🔀 Tipos de Grafos</h2>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <h4>Grafo No Dirigido</h4>
+                            <p>Las aristas no tienen dirección. La conexión entre dos vértices es bidireccional.</p>
+                            <div class="diagrama">
+                                A -------- B<br>
+                                Arista: {A, B} = {B, A}
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h4>Grafo Dirigido</h4>
+                            <p>Las aristas tienen dirección. Se representan con flechas.</p>
+                            <div class="diagrama">
+                                A -------&gt; B<br>
+                                Arista: (A, B) ≠ (B, A)
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h4>Grafo Ponderado</h4>
+                            <p>Cada arista tiene asociado un peso o costo.</p>
+                            <div class="diagrama">
+                                A ---5--- B<br>
+                                |         |<br>
+                                3         2<br>
+                                |         |<br>
+                                C ---4--- D
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h4>Grafo Completo</h4>
+                            <p>Todo vértice está conectado con todos los demás vértices.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>Grafo Conexo</h4>
+                            <p>Existe un camino entre cualquier par de vértices.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>Grafo Cíclico</h4>
+                            <p>Contiene al menos un ciclo.</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- REPRESENTACIÓN -->
+            <section id="representacion">
+                <article class="article">
+                    <h2>💾 Representación de Grafos</h2>
+
+                    <h3>1. Matriz de Adyacencia</h3>
+                    <p>
+                        Matriz NxN donde M[i][j] = 1 si existe arista entre i y j, 0 en caso contrario.
+                    </p>
+
+                    <table class="tabla">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>A</th>
+                                <th>B</th>
+                                <th>C</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>A</strong></td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td><strong>B</strong></td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>C</strong></td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="success-box">
+                        <strong>✓ Ventajas:</strong> Acceso O(1), simple de implementar
+                    </div>
+
+                    <h3>2. Lista de Adyacencia</h3>
+                    <p>
+                        Cada vértice tiene una lista con sus vértices adyacentes. Más eficiente para grafos dispersos.
+                    </p>
+
+                    <pre><code>grafo = {
+    'A': ['B', 'C'],
+    'B': ['A'],
+    'C': ['A']
+}</code></pre>
+
+                    <div class="success-box">
+                        <strong>✓ Ventajas:</strong> O(V + E) espacio, eficiente para grafos dispersos
+                    </div>
+
+                    <h3>3. Lista de Aristas</h3>
+                    <p>
+                        Almacena todas las aristas como pares de vértices.
+                    </p>
+
+                    <pre><code>aristas = [
+    ('A', 'B', 5),
+    ('A', 'C', 3),
+    ('B', 'C', 2)
+]</code></pre>
+                </article>
+            </section>
+
+            <!-- ALGORITMOS -->
+            <section id="algoritmos">
+                <article class="article">
+                    <h2>⚙️ Algoritmos Principales</h2>
+
+                    <h3>1. Búsqueda en Profundidad (DFS)</h3>
+                    <p>
+                        Explora el grafo lo más profundo posible antes de retroceder. 
+                        Utiliza una pila (stack).
+                    </p>
+
+                    <pre><code>def dfs(grafo, nodo, visitados=None):
+    if visitados is None:
+        visitados = set()
+    
+    visitados.add(nodo)
+    print(nodo)
+    
+    for adyacente in grafo[nodo]:
+        if adyacente not in visitados:
+            dfs(grafo, adyacente, visitados)</code></pre>
+
+                    <div class="beneficio">Complejidad: O(V + E)</div>
+
+                    <h3>2. Búsqueda en Amplitud (BFS)</h3>
+                    <p>
+                        Explora el grafo por niveles. Utiliza una cola (queue).
+                    </p>
+
+                    <pre><code>from collections import deque
+
+def bfs(grafo, inicio):
+    visitados = set()
+    cola = deque([inicio])
+    visitados.add(inicio)
+    
+    while cola:
+        nodo = cola.popleft()
+        print(nodo)
+        
+        for adyacente in grafo[nodo]:
+            if adyacente not in visitados:
+                visitados.add(adyacente)
+                cola.append(adyacente)</code></pre>
+
+                    <div class="beneficio">Complejidad: O(V + E)</div>
+
+                    <h3>3. Algoritmo de Dijkstra</h3>
+                    <p>
+                        Encuentra el camino más corto entre dos nodos en grafos con pesos positivos.
+                    </p>
+                    <div class="beneficio">Complejidad: O((V + E) log V)</div>
+
+                    <h3>4. Floyd-Warshall</h3>
+                    <p>
+                        Calcula los caminos más cortos entre todos los pares de vértices.
+                    </p>
+                    <div class="beneficio">Complejidad: O(V³)</div>
+
+                    <h3>5. Algoritmos MST</h3>
+                    <p>
+                        <strong>Prim:</strong> O((V + E) log V) | 
+                        <strong>Kruskal:</strong> O(E log E)
+                    </p>
+                </article>
+            </section>
+
+            <!-- APLICACIONES -->
+            <section id="aplicaciones">
+                <article class="article">
+                    <h2>🚀 Aplicaciones en Mundo Real</h2>
+
+                    <div class="cards-grid">
+                        <div class="card">
+                            <h4>📱 Redes Sociales</h4>
+                            <p>Usuarios = vértices, amistades = aristas. Recomendaciones, búsqueda de amigos.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>🗺️ GPS y Navegación</h4>
+                            <p>Ciudades = vértices, carreteras = aristas ponderadas. Rutas óptimas con Dijkstra.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>🌐 Redes de Computadoras</h4>
+                            <p>Computadoras = vértices, conexiones = aristas. Análisis de conectividad.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>🧪 Química Molecular</h4>
+                            <p>Átomos = vértices, enlaces = aristas. Identificación de estructuras.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>📋 Planificación de Tareas</h4>
+                            <p>Tareas = vértices, dependencias = aristas. Detección de ciclos.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>🔍 Motores de Búsqueda</h4>
+                            <p>Páginas = vértices, hipervínculos = aristas. Algoritmo PageRank.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>🎮 Inteligencia Artificial</h4>
+                            <p>Estados = vértices, transiciones = aristas. Pathfinding con A*.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4>🗄️ Bases de Datos</h4>
+                            <p>Entidades = vértices, relaciones = aristas. Modelado de datos complejos.</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- VENTAJAS -->
+            <section id="ventajas">
+                <article class="article">
+                    <h2>✨ Ventajas y Complejidades</h2>
+
+                    <h3>Beneficios de Usar Grafos</h3>
+                    <ul>
+                        <li>✓ Flexibilidad para representar relaciones complejas</li>
+                        <li>✓ Modelado natural de muchos problemas</li>
+                        <li>✓ Amplia variedad de algoritmos eficientes</li>
+                        <li>✓ Análisis de conectividad</li>
+                        <li>✓ Escalabilidad a millones de nodos</li>
+                        <li>✓ Fácil visualización</li>
+                    </ul>
+
+                    <h3>Análisis de Complejidad</h3>
+                    <table class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Operación</th>
+                                <th>Matriz Adyacencia</th>
+                                <th>Lista Adyacencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Agregar vértice</td>
+                                <td>O(V²)</td>
+                                <td>O(1)</td>
+                            </tr>
+                            <tr>
+                                <td>Agregar arista</td>
+                                <td>O(1)</td>
+                                <td>O(1)</td>
+                            </tr>
+                            <tr>
+                                <td>Eliminar arista</td>
+                                <td>O(1)</td>
+                                <td>O(grado)</td>
+                            </tr>
+                            <tr>
+                                <td>Verificar arista</td>
+                                <td>O(1)</td>
+                                <td>O(grado)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+
+            <a href="#" class="btn btn-primary volver-arriba">⬆️ Volver al Inicio</a>
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; 2025 Blog de Grafos - Estructura de Datos</p>
+            <p>Aprende sobre una de las herramientas más poderosas en programación</p>
+            <p>Estructura de Datos 2 | <a href="#">Proyecto Copilot</a></p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

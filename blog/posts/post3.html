@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post 3: Algoritmos de Recorrido | Blog de Grafos</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <h1>📊 Blog de Grafos</h1>
+        <p>Aprende sobre una de las estructuras de datos más fundamentales en informática</p>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../index.html#posts">Artículos</a>
+        <a href="https://github.com/jorgegarzon2122-cpu/proyecto-copilot" target="_blank">GitHub</a>
+    </nav>
+
+    <!-- CONTENIDO DEL POST -->
+    <div class="container">
+        <a href="../index.html" class="back-btn">← Volver al Inicio</a>
+
+        <article class="post-content">
+            <div class="post-header">
+                <h1>Algoritmos Fundamentales de Recorrido: BFS y DFS</h1>
+                <div class="post-meta-full">
+                    📅 Publicado: 3 de Diciembre, 2025 | 
+                    ⏱️ Tiempo de lectura: 12 minutos
+                </div>
+            </div>
+
+            <div class="post-body">
+                <h2>Introducción</h2>
+                <p>
+                    Una de las operaciones más importantes que podemos realizar en un grafo es 
+                    <strong>recorrerlo</strong>. Un recorrido de grafo es el proceso de visitar cada 
+                    vértice exactamente una vez, siguiendo un orden específico.
+                </p>
+                <p>
+                    Existen dos algoritmos fundamentales para recorrer un grafo:
+                </p>
+                <ul>
+                    <li><strong>BFS (Breadth-First Search)</strong> - Búsqueda en Amplitud</li>
+                    <li><strong>DFS (Depth-First Search)</strong> - Búsqueda en Profundidad</li>
+                </ul>
+                <p>
+                    Ambos son esenciales y forman la base de muchos algoritmos más complejos.
+                </p>
+
+                <h2>1. Búsqueda en Amplitud (BFS)</h2>
+
+                <h3>¿Qué es?</h3>
+                <p>
+                    <strong>BFS (Breadth-First Search)</strong> es un algoritmo que recorre el grafo 
+                    por niveles. Comienza en un vértice inicial y explora todos sus vecinos antes de 
+                    pasar a los vecinos de esos vecinos. Utiliza una <strong>cola (queue)</strong> 
+                    para mantener el orden de visita.
+                </p>
+
+                <h3>Funcionamiento Paso a Paso</h3>
+                <ol>
+                    <li>Marca el vértice inicial como visitado y lo agrega a la cola</li>
+                    <li>Mientras la cola no esté vacía:
+                        <ul>
+                            <li>Extrae el primer vértice de la cola</li>
+                            <li>Para cada vecino no visitado:
+                                <ul>
+                                    <li>Marca como visitado</li>
+                                    <li>Agrégalo a la cola</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Ejemplo Visual</h3>
+                <p>
+                    Consideremos este grafo:
+                </p>
+                <div class="diagram">
+                    <strong>Grafo Original:</strong>
+                    <pre>
+        A
+       / \
+      B   C
+      |   |
+      D   E
+                    </pre>
+                </div>
+
+                <p>Si hacemos BFS comenzando en A, el orden de visita sería: <strong>A → B → C → D → E</strong></p>
+
+                <div class="diagram">
+                    <strong>Orden de visita en BFS:</strong>
+                    <pre>
+Nivel 0: [A]
+Nivel 1: [B, C]
+Nivel 2: [D, E]
+                    </pre>
+                </div>
+
+                <h3>Código Python</h3>
+                <pre><code>from collections import deque
+
+def bfs(grafo, inicio):
+    """
+    BFS - Búsqueda en Amplitud
+    
+    Args:
+        grafo: Diccionario con lista de adyacencia
+        inicio: Vértice de inicio
+    """
+    visitados = set()
+    cola = deque([inicio])
+    visitados.add(inicio)
+    resultado = []
+    
+    while cola:
+        vertice = cola.popleft()
+        resultado.append(vertice)
+        
+        for adyacente in grafo[vertice]:
+            if adyacente not in visitados:
+                visitados.add(adyacente)
+                cola.append(adyacente)
+    
+    return resultado
+
+# Ejemplo de uso
+grafo = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'E'],
+    'D': ['B'],
+    'E': ['C']
+}
+
+print(bfs(grafo, 'A'))  # Salida: ['A', 'B', 'C', 'D', 'E']</code></pre>
+
+                <h3>Características de BFS</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>Descripción</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad de Tiempo</strong></td>
+                        <td>O(V + E)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad de Espacio</strong></td>
+                        <td>O(V)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Estructura de Datos</strong></td>
+                        <td>Cola (Queue)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recorrido</strong></td>
+                        <td>Por niveles (Amplitud)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Camino Más Corto</strong></td>
+                        <td>Sí (en grafos sin pesos)</td>
+                    </tr>
+                </table>
+
+                <h3>Aplicaciones de BFS</h3>
+                <ul>
+                    <li>🔍 Encontrar el camino más corto entre dos nodos</li>
+                    <li>🌳 Encontrar componentes conexas</li>
+                    <li>🔄 Detectar ciclos en grafos no dirigidos</li>
+                    <li>📡 Redes: encontrar nodos a una distancia específica</li>
+                    <li>🎮 Videojuegos: movimiento de personajes</li>
+                </ul>
+
+                <h2>2. Búsqueda en Profundidad (DFS)</h2>
+
+                <h3>¿Qué es?</h3>
+                <p>
+                    <strong>DFS (Depth-First Search)</strong> es un algoritmo que recorre el grafo 
+                    explorando lo más profundo posible antes de retroceder. Utiliza una 
+                    <strong>pila (stack)</strong> o puede implementarse de forma recursiva.
+                </p>
+
+                <h3>Funcionamiento Paso a Paso</h3>
+                <ol>
+                    <li>Marca el vértice actual como visitado</li>
+                    <li>Para cada vecino no visitado:
+                        <ul>
+                            <li>Recursivamente, ejecuta DFS en ese vecino</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3>Ejemplo Visual</h3>
+                <p>
+                    Para el mismo grafo anterior, si hacemos DFS comenzando en A:
+                </p>
+
+                <div class="diagram">
+                    <strong>Recorrido DFS:</strong>
+                    <pre>
+Comienza en A
+Explora B (primer vecino)
+  Explora D (vecino de B)
+    D no tiene vecinos no visitados
+  Retrocede a B
+Retrocede a A
+Explora C
+  Explora E
+    E no tiene vecinos no visitados
+  Retrocede a C
+Fin
+
+Orden: A → B → D → C → E
+                    </pre>
+                </div>
+
+                <h3>Código Python - Versión Recursiva</h3>
+                <pre><code>def dfs_recursivo(grafo, vertice, visitados=None):
+    """
+    DFS - Búsqueda en Profundidad (Versión Recursiva)
+    """
+    if visitados is None:
+        visitados = set()
+    
+    visitados.add(vertice)
+    resultado = [vertice]
+    
+    for adyacente in grafo[vertice]:
+        if adyacente not in visitados:
+            resultado.extend(dfs_recursivo(grafo, adyacente, visitados))
+    
+    return resultado
+
+# Ejemplo de uso
+print(dfs_recursivo(grafo, 'A'))  # Salida: ['A', 'B', 'D', 'C', 'E']</code></pre>
+
+                <h3>Código Python - Versión Iterativa</h3>
+                <pre><code>def dfs_iterativo(grafo, inicio):
+    """
+    DFS - Búsqueda en Profundidad (Versión Iterativa)
+    """
+    visitados = set()
+    pila = [inicio]
+    resultado = []
+    
+    while pila:
+        vertice = pila.pop()
+        if vertice not in visitados:
+            visitados.add(vertice)
+            resultado.append(vertice)
+            # Agregar vecinos en orden inverso para mantener orden
+            pila.extend(reversed(grafo[vertice]))
+    
+    return resultado
+
+print(dfs_iterativo(grafo, 'A'))  # Salida: ['A', 'B', 'D', 'C', 'E']</code></pre>
+
+                <h3>Características de DFS</h3>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>Descripción</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad de Tiempo</strong></td>
+                        <td>O(V + E)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad de Espacio</strong></td>
+                        <td>O(V)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Estructura de Datos</strong></td>
+                        <td>Pila (Stack) o Recursión</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recorrido</strong></td>
+                        <td>En Profundidad</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Camino Más Corto</strong></td>
+                        <td>No garantizado</td>
+                    </tr>
+                </table>
+
+                <h3>Aplicaciones de DFS</h3>
+                <ul>
+                    <li>🔄 Detectar ciclos en grafos</li>
+                    <li>🗂️ Ordenamiento topológico</li>
+                    <li>🌳 Encontrar componentes fuertemente conexas</li>
+                    <li>🔐 Detectar puentes y puntos de articulación</li>
+                    <li>🧩 Resolver problemas de puzzle y laberintos</li>
+                    <li>✅ Verificar conectividad</li>
+                </ul>
+
+                <h2>Comparación: BFS vs DFS</h2>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th>Criterio</th>
+                        <th>BFS</th>
+                        <th>DFS</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Orden de Recorrido</strong></td>
+                        <td>Por niveles (Amplitud)</td>
+                        <td>Profundo (uno a uno)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Estructura de Datos</strong></td>
+                        <td>Cola</td>
+                        <td>Pila / Recursión</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad Tiempo</strong></td>
+                        <td>O(V + E)</td>
+                        <td>O(V + E)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complejidad Espacio</strong></td>
+                        <td>O(V)</td>
+                        <td>O(V)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Camino Más Corto</strong></td>
+                        <td>✅ Sí</td>
+                        <td>❌ No</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Detectar Ciclos</strong></td>
+                        <td>✅ Sí</td>
+                        <td>✅ Sí</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fácil de Entender</strong></td>
+                        <td>✅ Sí</td>
+                        <td>✅ Sí</td>
+                    </tr>
+                </table>
+
+                <h2>¿Cuál Usar?</h2>
+
+                <div class="highlight">
+                    <strong>Usa BFS cuando:</strong>
+                    <ul>
+                        <li>Necesitas encontrar el camino más corto en un grafo sin pesos</li>
+                        <li>Quieres recorrer por niveles de distancia</li>
+                        <li>Buscas la solución más próxima al inicio</li>
+                        <li>Trabajas con redes y necesitas exploración por capas</li>
+                    </ul>
+                </div>
+
+                <div class="highlight">
+                    <strong>Usa DFS cuando:</strong>
+                    <ul>
+                        <li>Necesitas detectar ciclos o hacer ordenamiento topológico</li>
+                        <li>Buscas cualquier solución (no necesariamente la más cercana)</li>
+                        <li>Trabajas con exploración profunda (laberintos, puzzles)</li>
+                        <li>Necesitas componentes conexas o fuertemente conexas</li>
+                        <li>Prefieres una implementación recursiva y elegante</li>
+                    </ul>
+                </div>
+
+                <h2>Conclusión</h2>
+                <p>
+                    BFS y DFS son dos algoritmos fundamentales que forman la base de la mayoría de 
+                    algoritmos de grafos. Ambos tienen la misma complejidad temporal y espacial, pero 
+                    difieren en su orden de recorrido y aplicaciones. Dominar estos dos algoritmos es 
+                    esencial para cualquiera que quiera trabajar con grafos.
+                </p>
+
+                <div class="info-box">
+                    <strong>🎯 Siguiente Paso:</strong> Con el conocimiento de estos algoritmos 
+                    fundamentales, estás listo para explorar algoritmos más avanzados como 
+                    Dijkstra, Bellman-Ford y otros algoritmos de grafos.
+                </div>
+            </div>
+        </article>
+
+        <a href="../index.html" class="back-btn">← Volver al Inicio</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Blog de Grafos - Estructura de Datos</p>
+        <p>Proyecto educativo para aprender sobre Grafos</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

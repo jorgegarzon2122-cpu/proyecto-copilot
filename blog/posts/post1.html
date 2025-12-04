@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post 1: Introducción a los Grafos | Blog de Grafos</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <h1>📊 Blog de Grafos</h1>
+        <p>Aprende sobre una de las estructuras de datos más fundamentales en informática</p>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="../index.html#posts">Artículos</a>
+        <a href="https://github.com/jorgegarzon2122-cpu/proyecto-copilot" target="_blank">GitHub</a>
+    </nav>
+
+    <!-- CONTENIDO DEL POST -->
+    <div class="container">
+        <a href="../index.html" class="back-btn">← Volver al Inicio</a>
+
+        <article class="post-content">
+            <div class="post-header">
+                <h1>Introducción a los Grafos: Nodos, Aristas y Tipos</h1>
+                <div class="post-meta-full">
+                    📅 Publicado: 3 de Diciembre, 2025 | 
+                    ⏱️ Tiempo de lectura: 8 minutos
+                </div>
+            </div>
+
+            <div class="post-body">
+                <h2>¿Qué es un Grafo?</h2>
+                <p>
+                    Un <strong>grafo</strong> es una estructura de datos que permite representar 
+                    relaciones entre objetos. Formalmente, un grafo se define como un par ordenado 
+                    <code>G = (V, E)</code> donde:
+                </p>
+                <ul>
+                    <li><strong>V</strong> es el conjunto de vértices o nodos</li>
+                    <li><strong>E</strong> es el conjunto de aristas o ejes que conectan los vértices</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>💡 Nota:</strong> Los grafos son ampliamente utilizados para modelar 
+                    problemas reales como redes sociales, mapas de carreteras, redes de computadoras 
+                    y muchas otras aplicaciones.
+                </div>
+
+                <h2>Componentes Fundamentales</h2>
+
+                <h3>1. Vértices o Nodos</h3>
+                <p>
+                    Un <strong>vértice</strong> (también llamado nodo) es un punto o elemento individual 
+                    en el grafo. Representa una entidad u objeto en el problema que queremos modelar. 
+                    Por ejemplo, en una red social, cada usuario es un vértice.
+                </p>
+
+                <h3>2. Aristas o Ejes</h3>
+                <p>
+                    Una <strong>arista</strong> (también llamada eje o arco) es una conexión entre dos 
+                    vértices. Representa una relación entre dos elementos. En una red social, una amistad 
+                    entre dos usuarios es una arista.
+                </p>
+
+                <h3>3. Peso (Opcional)</h3>
+                <p>
+                    Algunas aristas pueden tener un <strong>peso</strong> asociado que representa el "costo" 
+                    o "distancia" entre dos vértices. Por ejemplo, en un mapa, el peso puede ser la distancia 
+                    en kilómetros entre dos ciudades.
+                </p>
+
+                <h2>Ejemplo Visual: Grafo No Dirigido</h2>
+                <p>
+                    A continuación se muestra un ejemplo de un grafo no dirigido simple con 5 vértices (A, B, C, D, E):
+                </p>
+
+                <div class="diagram">
+                    <strong>Representación Visual:</strong>
+                    <pre>
+        A
+       / \
+      /   \
+     B --- C
+      \   /
+       \ /
+        D
+        |
+        E
+                    </pre>
+                    <p style="margin-top: 15px; color: #7f8c8d;">
+                        <strong>Vértices:</strong> V = {A, B, C, D, E}<br>
+                        <strong>Aristas:</strong> E = {(A,B), (A,C), (B,C), (B,D), (C,D), (D,E)}
+                    </p>
+                </div>
+
+                <h2>Tipos de Grafos</h2>
+
+                <h3>1. Grafos No Dirigidos</h3>
+                <p>
+                    En un <strong>grafo no dirigido</strong>, las aristas no tienen dirección. 
+                    La conexión es bidireccional: si existe una arista entre A y B, también existe 
+                    de B hacia A. Las aristas se representan como pares de vértices no ordenados {A, B}.
+                </p>
+                <div class="highlight">
+                    <strong>Ejemplo:</strong> Una red de amigos en Facebook donde la amistad es mutua.
+                </div>
+
+                <h3>2. Grafos Dirigidos (Digrafos)</h3>
+                <p>
+                    En un <strong>grafo dirigido</strong>, las aristas tienen una dirección específica. 
+                    Se representan como pares ordenados (A, B), indicando una conexión de A hacia B. 
+                    La existencia de una arista de A a B no implica la existencia de una de B a A.
+                </p>
+                <div class="diagram">
+                    <strong>Ejemplo de Grafo Dirigido:</strong>
+                    <pre>
+        A ----→ B
+        ↑       ↓
+        |       ↓
+        +←──── C
+                    </pre>
+                </div>
+                <div class="highlight">
+                    <strong>Ejemplo:</strong> Un seguidor en Twitter sigue a una persona, pero esa persona 
+                    no necesariamente lo sigue de vuelta.
+                </div>
+
+                <h3>3. Grafos Ponderados</h3>
+                <p>
+                    Un <strong>grafo ponderado</strong> es aquel donde cada arista tiene asociado un peso 
+                    o valor numérico. Este peso puede representar distancia, costo, capacidad u otra 
+                    magnitud relevante al problema.
+                </p>
+                <div class="diagram">
+                    <strong>Ejemplo de Grafo Ponderado:</strong>
+                    <pre>
+        A ---5--- B
+        |         |
+        3         2
+        |         |
+        C ---4--- D
+                    </pre>
+                    <p style="margin-top: 15px; color: #7f8c8d;">
+                        Los números indican el peso de cada arista
+                    </p>
+                </div>
+                <div class="highlight">
+                    <strong>Ejemplo:</strong> En un mapa de carreteras, el peso de una arista puede ser 
+                    la distancia en kilómetros entre dos ciudades.
+                </div>
+
+                <h2>Conceptos Adicionales Importantes</h2>
+
+                <h3>Grado de un Vértice</h3>
+                <p>
+                    El <strong>grado</strong> de un vértice es el número de aristas que están conectadas 
+                    a él. En grafos dirigidos, se distingue entre:
+                </p>
+                <ul>
+                    <li><strong>Grado de entrada (in-degree):</strong> número de aristas que llegan al vértice</li>
+                    <li><strong>Grado de salida (out-degree):</strong> número de aristas que salen del vértice</li>
+                </ul>
+
+                <h3>Camino</h3>
+                <p>
+                    Un <strong>camino</strong> es una secuencia de vértices conectados por aristas. 
+                    La longitud del camino es el número de aristas que lo componen.
+                </p>
+
+                <h3>Ciclo</h3>
+                <p>
+                    Un <strong>ciclo</strong> es un camino que comienza y termina en el mismo vértice, 
+                    sin repetir otras aristas.
+                </p>
+
+                <h2>Aplicaciones Prácticas</h2>
+                <p>
+                    Los grafos tienen innumerables aplicaciones en el mundo real:
+                </p>
+                <ul>
+                    <li>📱 <strong>Redes Sociales:</strong> representar usuarios y sus conexiones</li>
+                    <li>🗺️ <strong>GPS y Mapas:</strong> modelar ciudades y carreteras</li>
+                    <li>🌐 <strong>Internet:</strong> representar páginas web y hipervínculos</li>
+                    <li>✈️ <strong>Transporte:</strong> rutas de vuelos entre aeropuertos</li>
+                    <li>🧪 <strong>Química:</strong> estructura de moléculas</li>
+                    <li>🎮 <strong>Videojuegos:</strong> mapa de niveles y conexiones</li>
+                </ul>
+
+                <h2>Conclusión</h2>
+                <p>
+                    Los grafos son una estructura de datos versátil y poderosa que permite modelar 
+                    relaciones complejas entre objetos. Entender los conceptos básicos de vértices, 
+                    aristas y tipos de grafos es fundamental para poder trabajar con problemas más 
+                    avanzados. En los próximos artículos, exploraremos cómo se representan los grafos 
+                    en memoria y los algoritmos para recorrerlos.
+                </p>
+
+                <div class="info-box">
+                    <strong>📚 Lectura Recomendada:</strong> En el siguiente artículo aprenderemos 
+                    sobre las dos principales formas de representar un grafo en la memoria de una computadora.
+                </div>
+            </div>
+        </article>
+
+        <a href="../index.html" class="back-btn">← Volver al Inicio</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Blog de Grafos - Estructura de Datos</p>
+        <p>Proyecto educativo para aprender sobre Grafos</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
